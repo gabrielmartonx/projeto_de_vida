@@ -1,4 +1,26 @@
+/*aula1- ESTRUTURANDO O SITE*/
+@import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;700&display=swap');
+
 :root{
-    --cor-de-fundo:#26043F; 
-    --branco:#FFFFFF;
+    --cor-de-fundo: #7db7ee;
+    --branco: #FFFFFF;
+    --verde: #c265f8;
+    --botao-ativo: #3A375E;
+    --botao-inativo: rgba(255, 34, 34, 0.5);
+    --texto-fundo: rgba(255, 255, 255, 0.3);
 }
+
+body {
+    background-color: var(--cor-de-fundo);
+    color: var(--branco);
+    font-family: 'Chakra Petch', sans-serif;
+}
+
+.conteudo-principal {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    
+}
+
+/*aula2 -página responsiva*/
