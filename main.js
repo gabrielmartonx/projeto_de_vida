@@ -1,48 +1,59 @@
-//Variáveis
-private Timer timer;
-private int currentSegundo = 0;
-private int currentMinuto = 0;
-private int currentHora = 0;
-private int velocidade = 1000;
 
-//Construtor da tela que inicia o método
-public viewEMB_MesaBip() {
-    initComponents();
-    iniciarCronometro(lblCronometro);//Aqui está o método do cronômetro
-}
+const botoes = document.querySelectorAll(".botao");
+const textos = document.querySelectorAll(".aba-conteudo");
 
-//Botão INICIAR
-private void btnIniciarActionPerformed(java.awt.event.ActionEvent evt) {
-timer.restart();//Inicia a Thread do método para que o cronômetro rode
-}
+for (let i = 0; i < botoes.length; i++) {
+    botoes[i].onclick = function () {
 
-//Metodo CRONOMETRO (AQUI PRECISO DE AJUDA PARA SER REGRESSIVO)
-private void iniciarCronometro(JLabel label) {
-    ActionListener action = new ActionListener() {
-        public void actionPerformed(ActionEvent e) {
-            currentSegundo++;
-            if (currentSegundo == 60) {
-                currentMinuto++;
-                currentSegundo = 0;
-            }
-            if (currentMinuto == 60) {
-                currentHora++;
-                currentMinuto = 0;
-            }
-            String hr = currentHora <= 9 ? "0" + currentHora : currentHora + "";
-            String min = currentMinuto <= 9 ? "0" + currentMinuto : currentMinuto + "";
-            String seg = currentSegundo <= 9 ? "0" + currentSegundo : currentSegundo + "";
-            label.setText(hr + ":" + min + ":" + seg);
+        for (let j = 0; j < botoes.length; j++) {
+            botoes[j].classList.remove("ativo");
+            textos[j].classList.remove("ativo");
         }
-    };
-    this.timer = new Timer(velocidade, action);
-    this.timer.start();
+
+        botoes[i].classList.add("ativo");
+        textos[i].classList.add("ativo");
+    }
 }
 
-//Metodo para parar o cronometro
-private void zerarCronometro(JLabel label) {
-    timer.stop();
-    currentHora = 0;
-    currentMinuto = 0;
-    currentSegundo = 0;
-    label.setText("00:00:00");
+
+const contadores = document.querySelectorAll(".contador");
+const tempoObjetivo1 = new Date("2023-10-05T00:00:00");
+const tempoObjetivo2 = new Date("2024-10-30T00:00:00");
+const tempoObjetivo3 = new Date("2024-11-05T00:00:00");
+const tempoObjetivo4 = new Date("2024-12-30T00:00:00");
+
+const tempos =
+[tempoObjetivo1,tempoObjetivo2,tempoObjetivo3,tempoObjetivo4];
+
+
+function atualizaCronometro(){
+     for (let i=0; i<contadores.length;i++){
+    contadores[i].textContent = calculaTempo(tempos[i]); } 
+}
+
+
+
+function comecaCronometro(){
+    atualizaCronometro();
+    setInterval(atualizaCronometro,1000);
+}
+
+comecaCronometro();
+
+function calculaTempo(tempoObjetivo) {
+    let tempoAtual = new Date();
+    let tempoFinal = tempoObjetivo - tempoAtual;
+    let segundos = Math.floor(tempoFinal / 1000);
+    let minutos = Math.floor(segundos / 60);
+    let horas = Math.floor(minutos / 60);
+    let dias = Math.floor(horas / 24);
+
+    segundos %= 60;
+    minutos %= 60;
+    horas %= 24;
+    if (tempoFinal > 0){
+        return dias + " dias " + horas + " horas " + minutos + " minutos " + segundos + " segundos";
+    } else {
+        return "Prazo Finalizado";
+    }
+}
