@@ -1,12 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;700&display=swap');
 
-:root {
-    --cor-de-fundo: #c0c0c0;
-    --verde: #af0000;
-    --branco: #000000;
-    --botao-ativo: #ff0000;
-    --botao-inativo: rgb(248, 140, 140);
-    --texto-fundo: rgb(255, 255, 255);
+:root{
+    --cor-de-fundo:#00d7fd; 
+    --branco:#FFFFFF;
+    --rosa:#1752f3;
+    --botao-ativo:#4ef3f3;
+    --botao-inativo:#0026ffaf;
+    --texto-fundo:#0003bb;
 }
 
 body {
@@ -20,28 +20,19 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    max-width: 1500px;
-    height: 600px;
+    max-width: 1200px;
     width: 100%;
-    margin: 2.5% auto;
-}
-
-.conteudo {
-    width: 1500px;
-    height: 500px;
-    box-shadow: 14px 160px 2px 1px rgba(0, 0, 0, 0.2);
-    background-color: var(--cor-de-fundo);
+    margin: 0 auto;
 }
 
 .titulo-principal {
     text-align: left;
     width: 100%;
-    font-size: 32px;
-    color: var(--branco);
+    font-size: 20px;
 }
 
 .titulo-principal span {
-    color: var(--verde);
+    color: var(--rosa);
 }
 
 
@@ -71,17 +62,16 @@ body {
 
 .botao.ativo{
     background-color: var(--botao-ativo);
-    border-bottom: 4px solid var(--verde);
+    border-bottom: 4px solid var(--rosa);
 }
 
 .abas-textos{
-    background-color: var(--texto-fundo);
+    background-color: var(--botao-inativo);
     padding: 40px;
-    height: 500px;
+    border-radius: 0 0 40px 40px;
 }
 .aba-conteudo.ativo{
     display:block;
-    margin: 10% 0%;
 }
 
 .aba-conteudo{
@@ -91,20 +81,35 @@ body {
 .aba-conteudo-titulo-principal{
     font-size: 28px;
     text-align: center;
-    color: var(--branco);
 }
 .aba-conteudo-titulo-secundario{
     text-align: center;
-    color: var(--verde);
+    color: var(--rosa);
     text-transform: uppercase;
 }
 
-.contador{
-    font-size: 20px;
-    text-align: center;
-    color: var(--branco);
+.contador{  /*aula6*/
+    display: flex;
+    justify-content: center;
 }
 
+.contador-digito{
+    padding: 0 16px;
+    text-align: center;
+    flex-wrap: wrap;
+    min-width: 100px;
+}
+
+.contador-digito-numero{
+    font-size: 80px;
+    margin: 0;
+}
+
+.contador-digito-texto{
+    color: var(--rosa);
+    font-size: 20px;
+    margin: 0;
+}
 @media screen and (min-width: 768px) {
     .botoes {
         display: flex;
@@ -115,6 +120,6 @@ body {
     }
 
     .botao:last-child {
-        border-radius: 0 40px 0 0;
-    }
+        border-radius: 0 40px 0 0;
+    }
 }
